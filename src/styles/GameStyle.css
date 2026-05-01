@@ -1,0 +1,120 @@
+#root {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.gameMain {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.gameBanner {
+  position: relative;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-items: center;
+}
+.gameBanner > .titleimage > h3 {
+  border-bottom: 0;
+}
+.gameBanner > .titleimage > img {
+  border-radius: 5px;
+  max-height: 200px;
+  max-width: 100%;
+}
+.info {
+  border-left: solid var(--main-bg-color);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  line-height: 0px;
+}
+
+.ratings {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+.steamRating {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
+}
+.metaRating {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
+}
+.steamLogo {
+  height: 15px;
+  margin: 5px;
+}
+.metaLogo {
+  height: 15px;
+  margin: 5px;
+}
+.bestDeal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.bestDeal > h4 {
+  font-size: 24px;
+  line-height: 5px;
+}
+.deals > h2 {
+  border-bottom: solid black;
+  padding: 5px;
+}
+.deal {
+  padding: 5px;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid black;
+}
+.store {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+.deal > .store > img {
+  height: 50%;
+}
+.footerGame {
+  align-self: center;
+  justify-self: end;
+}
+
+@media only screen and (max-width: 800px) {
+  .gameBanner > h3 {
+    font-size: 24px;
+  }
+  .bestDeal > h4 {
+    font-size: 16px;
+    line-height: 5px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .gameBanner > h3 {
+    top: -25px;
+    font-size: 20px;
+  }
+}

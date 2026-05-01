@@ -1,0 +1,16 @@
+.main {
+  padding: 0;
+  align-self: center;
+  border-radius: 0;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+.footerUl {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  text-align: left;
+}

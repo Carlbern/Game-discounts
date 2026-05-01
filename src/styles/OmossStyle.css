@@ -1,0 +1,39 @@
+.omMain {
+  display: flex;
+  flex-direction: row;
+}
+.siteDesc {
+  border: 1px solid white;
+  margin: 10px;
+  width: 50%;
+}
+p {
+  margin: 20px;
+  font-size: 18px;
+}
+.apiInfo {
+  border: 1px solid white;
+  margin: 10px;
+  width: 50%;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+@media only screen and (max-width: 600px) {
+  .omMain {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .siteDesc {
+    width: 90%;
+  }
+  .apiInfo {
+    width: 90%;
+  }
+  .footer {
+    position: unset;
+  }
+}

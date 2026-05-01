@@ -1,0 +1,87 @@
+.main {
+  height: 150px;
+  display: flex;
+  padding: 5px;
+}
+.banner {
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+}
+.banner > .headers {
+  text-align: left;
+  position: absolute;
+  top: 0px;
+  left: 5px;
+}
+.headers > h2 {
+  line-height: 0px;
+}
+.headers > p {
+  line-height: 5px;
+}
+.title {
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+}
+.prices {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: left;
+}
+.priceButton {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.priceButton > a {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.priceButton > a > button {
+  width: 100%;
+  height: 100%;
+  color: rgb(10, 219, 10);
+  animation: global(pulse) 2s infinite;
+  font-size: 18px;
+}
+.priceButton > a > button:hover {
+  cursor: pointer;
+}
+@media (prefers-color-scheme: light) {
+  .priceButton > a > button {
+    background-color: black;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .priceButton > a > button {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .priceButton > a {
+    width: 100%;
+  }
+}

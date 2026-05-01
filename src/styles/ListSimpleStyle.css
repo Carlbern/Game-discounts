@@ -1,0 +1,90 @@
+h3 {
+  border-bottom: solid black;
+  padding: 2px;
+}
+.ListSimple {
+  width: 100%;
+}
+.gameListItem {
+  border-bottom: solid black;
+  margin: 5px;
+  padding: 10px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.gameListItem > .leftSide {
+  height: 100%;
+  width: 30%;
+}
+.gameListItem > .rightSide {
+  padding: 5px;
+  width: 70%;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.gameListItem > .rightSide > .pricesList > .mobileViewImage {
+  display: none;
+}
+.gameListItem > .leftSide > img {
+  max-height: 100%;
+}
+.gameListItem > .rightSide > h4 {
+  width: 50%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.gameListItem > .rightSide > .pricesList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+.listBtn {
+  animation: unset;
+}
+@media only screen and (max-width: 800px) {
+  .gameListItem {
+    height: unset;
+    padding: 5px;
+    margin: 0px;
+  }
+  .gameListItem > .leftSide {
+    display: none;
+  }
+  .gameListItem > .rightSide {
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+    overflow: unset;
+    text-overflow: unset;
+  }
+  .gameListItem > .rightSide > .pricesList {
+    width: 80%;
+  }
+  .gameListItem > .rightSide > .pricesList > p {
+    font-size: 16px;
+  }
+  .gameListItem > .rightSide > .pricesList > .mobileViewImage {
+    display: block;
+    max-height: 50px;
+    max-width: 30%;
+  }
+  .gameListItem > .rightSide > h4 {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .gameListItem > .rightSide > .pricesList > .mobileViewImage {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+}

@@ -1,0 +1,117 @@
+@font-face {
+  font-family: "Outfit";
+  src: url("./assets/fonts/Outfit-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Geo";
+  src: url("./assets/fonts/Geo-Regular.ttf");
+}
+@font-face {
+  font-family: "Orbitron";
+  src: url("./assets/fonts/Orbitron-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("./assets/fonts/SpaceGrotesk-VariableFont_wght.ttf");
+}
+@property --main-bg-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgb(18, 30, 60);
+}
+@property --shadow-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: white;
+}
+@property --dark-text-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(168, 248, 232, 1);
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+:root {
+  font-family: SpaceGrotesk;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--dark-text-color);
+  background-image: url(/images/darkModeBG.webp);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  box-sizing: border-box;
+}
+h1 {
+  font-family: Geo;
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+h2,
+h3,
+h4 {
+  font-family: Outfit;
+}
+body {
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  min-width: 320px;
+  max-width: 100%;
+  min-height: 100vh;
+}
+.main {
+  position: relative;
+  background-color: var(--main-bg-color);
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 8px var(--shadow-color);
+}
+
+@media (prefers-color-scheme: light) {
+  @property --main-bg-color {
+    syntax: "<color>";
+    inherits: false;
+    /* initial-value: rgb(51, 64, 94); */
+  }
+  @property --shadow-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: black;
+  }
+  :root {
+    color: rgb(240, 240, 240);
+    background-image: url(/images/lightModeBG.webp);
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 0px;
+  }
+}

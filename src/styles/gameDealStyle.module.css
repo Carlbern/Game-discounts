@@ -1,0 +1,6 @@
+.image {
+  max-height: 100%;
+}
+.image > img {
+  max-height: 75px;
+}
