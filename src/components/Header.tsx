@@ -1,4 +1,4 @@
-import "../styles/HeaderStyle.module.css";
+import style from "../styles/HeaderStyle.module.css";
 import { Link } from "react-router";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -21,15 +21,21 @@ function Header(props: any) {
     <div className="main">
       {/*Visar sidrubrik */}
       {props.main && <h1>Spelrabatter.se</h1>}
-      <section>
+      <section className={style.section}>
         <div className="EMPTY-FILLER"></div>
-        <nav>
-          <Link to="/">Hem</Link>
-          <Link to="/search">Top Rabatter</Link>
-          <Link to="/omoss">Om oss</Link>
+        <nav className={style.nav}>
+          <Link className={style.link} to="/">
+            Hem
+          </Link>
+          <Link className={style.link} to="/search">
+            Top Rabatter
+          </Link>
+          <Link className={style.link} to="/omoss">
+            Om oss
+          </Link>
         </nav>
         {/*Sök input och knapp*/}
-        <div className="search">
+        <div className={style.search}>
           <input
             onKeyDown={(e) => registerKeyDown(e, { search })}
             type="text"

@@ -3,8 +3,8 @@ import TripleA from "../components/TripleA";
 import FreeDeal from "../components/FreeDeal";
 import ListSimple from "../components/ListSimple";
 import Footer from "../components/Footer";
-
 import "../styles/HomeStyle.css";
+
 function Home() {
   return (
     <>
@@ -13,7 +13,7 @@ function Home() {
       <TripleA />
       <FreeDeal />
 
-      <div className="lists main">
+      <div className="main lists">
         <div className="recentList">
           <ListSimple recent />
         </div>

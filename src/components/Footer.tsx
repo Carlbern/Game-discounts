@@ -1,11 +1,11 @@
-import FooterStyle from "../styles/FooterStyle.module.css";
+import style from "../styles/FooterStyle.module.css";
 import { Link } from "react-router";
 
 function Footer() {
   return (
-    <div className={`main ${FooterStyle.main}`}>
+    <div className={`main ${style.main}`}>
       {/*Navigation */}
-      <ul className={`${FooterStyle.footerUl}`}>
+      <ul className={`${style.footerUl}`}>
         <h4>Navigation</h4>
         <li>
           <Link to="/">Hem</Link>

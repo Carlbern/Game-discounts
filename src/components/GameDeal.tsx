@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import GameDealStyle from "../styles/gameDealStyle.module.css";
+import style from "../styles/gameDealStyle.module.css";
 
 function GameDeal(props: any) {
   const [bestDeal, setDeal]: any = useState([]);
@@ -59,7 +59,7 @@ function GameDeal(props: any) {
   else if (props.type == "bestdeal") {
     return (
       <>
-        <div className={GameDealStyle.image}>
+        <div className={style.image}>
           {stores[0]?.images !== undefined &&
             bestDeal.gameInfo !== undefined && (
               <img

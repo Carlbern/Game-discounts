@@ -1,4 +1,4 @@
-import "../styles/ListSimpleStyle.css";
+import style from "../styles/ListSimpleStyle.module.css";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -45,23 +45,23 @@ function ListSimple(props: any) {
       {props.reviews && <h3>Bästa recensionner</h3>}
       {props.top && <h3>Bästa rabatterna</h3>}
       {/*Övergripande div*/}
-      <div className="ListSimple">
+      <div className={style.ListSimple}>
         {/*Varje enskilt spel i listan*/}
         {games.map((game: any) => (
-          <div className="gameListItem">
+          <div className={style.gameListItem}>
             {/*Left side of list item */}
-            <div className="leftSide">
+            <div className={style.leftSide}>
               <img src={game.thumb} alt="" />
             </div>
             {/*Right side of list item */}
-            <div className="rightSide">
+            <div className={style.rightSide}>
               {/*Speltitel */}
               <h4>{game.title}</h4>
               {/*Icon och pris */}
               {props.recent && (
-                <div className="pricesList">
+                <div className={style.prices}>
                   {/*Bilden syns enbart i mobilvy */}
-                  <img src={game.thumb} className="mobileViewImage" />
+                  <img src={game.thumb} className={style.mobileViewImage} />
                   <p>
                     <span>
                       <FontAwesomeIcon icon={faArrowTrendDown} />
@@ -75,10 +75,12 @@ function ListSimple(props: any) {
                     href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
                   >
                     {Math.round(game.salePrice) == 0 && (
-                      <button className="priceBtn listBtn">Free</button>
+                      <button className={`${style.priceBtn} ${style.listBtn}`}>
+                        Free
+                      </button>
                     )}
                     {Math.round(game.salePrice) > 0 && (
-                      <button className="priceBtn listBtn">
+                      <button className={`${style.priceBtn} ${style.listBtn}`}>
                         ${game.salePrice}
                       </button>
                     )}
@@ -86,8 +88,8 @@ function ListSimple(props: any) {
                 </div>
               )}
               {props.top && (
-                <div className="pricesList">
-                  <img src={game.thumb} className="mobileViewImage" />
+                <div className={style.prices}>
+                  <img src={game.thumb} className={style.mobileViewImage} />
                   <p>
                     <span>
                       <FontAwesomeIcon icon={faArrowTrendDown} />
@@ -99,10 +101,12 @@ function ListSimple(props: any) {
                     href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
                   >
                     {Math.round(game.salePrice) == 0 && (
-                      <button className="priceBtn listBtn">Free</button>
+                      <button className={`${style.priceBtn} ${style.listBtn}`}>
+                        Free
+                      </button>
                     )}
                     {Math.round(game.salePrice) > 0 && (
-                      <button className="priceBtn listBtn">
+                      <button className={`${style.priceBtn} ${style.listBtn}`}>
                         ${game.salePrice}
                       </button>
                     )}
@@ -110,8 +114,8 @@ function ListSimple(props: any) {
                 </div>
               )}
               {props.reviews && (
-                <div className="pricesList">
-                  <img src={game.thumb} className="mobileViewImage" />
+                <div className={style.prices}>
+                  <img src={game.thumb} className={style.mobileViewImage} />
                   <p>
                     <span>
                       <FontAwesomeIcon icon={faCertificate} />
@@ -122,7 +126,7 @@ function ListSimple(props: any) {
                   <a
                     href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
                   >
-                    <button className="priceBtn listBtn">
+                    <button className={`${style.priceBtn} ${style.listBtn}`}>
                       ${game.salePrice}
                     </button>
                   </a>

@@ -3,7 +3,7 @@ import GameDeal from "../components/GameDeal";
 import Footer from "../components/Footer";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import "../styles/GameStyle.css";
+import style from "../styles/GameStyle.module.css";
 
 function Game() {
   const { id } = useParams<{ id: any }>();
@@ -32,23 +32,23 @@ function Game() {
       <Header />
       {/*Övergripande div*/}
       {game.info && (
-        <div className="gameMain">
+        <div className={style.main}>
           {/*Banner */}
-          <div className="main gameBanner">
-            <div className="titleimage">
+          <div className={`main ${style.banner}`}>
+            <div className={style.titleimage}>
               <h3>{game.info.title}</h3>
               <img src={game.info.thumb} alt="" />
               {/*Info om spel (bara dess betyg för tillfället) */}
             </div>
 
-            <div className="info">
+            <div className={style.info}>
               <h4>Betyg:</h4>
               {game.deals[0] && (
-                <div className="ratings">
+                <div className={style.info}>
                   {/*Steam*/}
-                  <div className="steamRating">
+                  <div className={style.steamRating}>
                     <img
-                      className="steamLogo"
+                      className={style.steamLogo}
                       src="/logos/steamLogo.png"
                       alt=""
                     />
@@ -59,9 +59,9 @@ function Game() {
                     />
                   </div>
                   {/*Metacritic*/}
-                  <div className="metaRating">
+                  <div className={style.metaRating}>
                     <img
-                      className="metaLogo"
+                      className={style.metaLogo}
                       src="/logos/metacriticLogo.png"
                       alt=""
                     />
@@ -75,7 +75,7 @@ function Game() {
               )}
             </div>
             {/*Spelets bästa rabatt*/}
-            <div className="bestDeal">
+            <div className={style.bestDeal}>
               <h4>Bästa deal</h4>
               <GameDeal
                 className="bestDealImage"
@@ -86,20 +86,22 @@ function Game() {
               <a
                 href={`https://www.cheapshark.com/redirect?dealID=${game.deals[0].dealID}`}
               >
-                <button className="priceBtn">{game.deals[0].price}</button>
+                <button className={style.priceBtn}>
+                  {game.deals[0].price}
+                </button>
               </a>
             </div>
           </div>
           {/*Alla spelets rabatter i lista*/}
-          <div className="main gameDeals">
+          <div className={`main ${style.gameDeal}`}>
             {game.deals && (
-              <div className="deals">
+              <div className={style.deals}>
                 <h2>Spelets rabatter</h2>
                 {/*Enskild rabatt*/}
                 {game.deals.map((deal: any) => (
-                  <div className="deal">
+                  <div className={style.deal}>
                     {stores[0] && (
-                      <div className="store">
+                      <div className={style.store}>
                         <h4>{stores[deal.storeID - 1].storeName}</h4>
                         <img
                           src={`https://www.cheapshark.com${
@@ -113,7 +115,9 @@ function Game() {
                     <a
                       href={`https://www.cheapshark.com/redirect?dealID=${deal.dealID}`}
                     >
-                      <button className="priceBtn listBtn">{deal.price}</button>
+                      <button className={`${style.listBtn} ${style.priceBtn}`}>
+                        {deal.price}
+                      </button>
                     </a>
                   </div>
                 ))}

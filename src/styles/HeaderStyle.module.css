@@ -1,8 +1,8 @@
-section {
+.section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-nav {
+.nav {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +10,7 @@ nav {
   gap: 15px;
   max-height: 50px;
 }
-nav > a {
+.link {
   border: 1px solid white;
   border-radius: 3px;
   text-decoration: none;
@@ -20,7 +20,7 @@ nav > a {
   font-family: FunnelSans;
   height: 100%;
 }
-nav > a:hover {
+.link:hover {
   background-color: var(--dark-text-color);
   color: var(--main-bg-color);
   transition: background-color 1s;

@@ -14,11 +14,11 @@ h3 {
   flex-direction: row;
   align-items: center;
 }
-.gameListItem > .leftSide {
+.leftSide {
   height: 100%;
   width: 30%;
 }
-.gameListItem > .rightSide {
+.rightSide {
   padding: 5px;
   width: 70%;
   height: 100%;
@@ -29,22 +29,31 @@ h3 {
   align-items: center;
   gap: 10px;
 }
-.gameListItem > .rightSide > .pricesList > .mobileViewImage {
+.mobileViewImage {
   display: none;
 }
-.gameListItem > .leftSide > img {
+.leftSide > img {
   max-height: 100%;
 }
-.gameListItem > .rightSide > h4 {
+.rightSide > h4 {
   width: 50%;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.gameListItem > .rightSide > .pricesList {
+.prices {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 50%;
+}
+.priceBtn {
+  border-radius: 5px;
+  animation: pulse 2s infinite;
+  color: rgb(10, 219, 10);
+  font-size: 16px;
+}
+.priceBtn:hover {
+  cursor: pointer;
 }
 .listBtn {
   animation: unset;

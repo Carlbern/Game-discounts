@@ -1,4 +1,4 @@
-import FreeDealStyle from "../styles/FreeDealStyle.module.css";
+import style from "../styles/FreeDealStyle.module.css";
 import { useState, useEffect } from "react";
 
 function FreeDeal() {
@@ -17,27 +17,27 @@ function FreeDeal() {
   return (
     <div className="main">
       {game.map((game: any) => (
-        <div className={FreeDealStyle.main}>
+        <div className={style.main}>
           {/*Bannern, vanligtvis på vänster sida */}
           <div
-            className={FreeDealStyle.banner}
+            className={style.banner}
             style={{ backgroundImage: `url(${game.thumb})` }}
           >
             {/*Ligger "över" bannern för att mörk bakgrund*/}
             <div className="gameText"></div>
-            <div className={FreeDealStyle.headers}>
+            <div className={style.headers}>
               <h2>Gratis deal</h2>
               <p>Just nu</p>
             </div>
-            <h3 className={FreeDealStyle.title}>{game.title}</h3>
+            <h3 className={style.title}>{game.title}</h3>
           </div>
           {/*Text med priser, vanligtvis på höger sida*/}
-          <div className={FreeDealStyle.prices}>
+          <div className={style.prices}>
             <div className="orgPrices">
               <p className="orgPrice">Orginal pris: ${game.normalPrice}</p>
               <p className="saving">Rabatt: {Math.round(game.savings)}%</p>
             </div>
-            <div className={FreeDealStyle.priceButton}>
+            <div className={style.priceButton}>
               <a
                 className="link"
                 href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
