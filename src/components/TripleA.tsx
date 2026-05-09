@@ -4,16 +4,24 @@ import style from "../styles/TripleAStyle.module.css";
 
 function TripleA() {
   const [games, setGames] = useState([]);
+  const [filteredGames, setFilteredGames]: any = useState([]);
   {
-    /*Hämtar de tre spel med bäst "rabattbetyg" som också är av typen AAA*/
+    /*Fetches top AAA games from API, to be filtered later*/
   }
   useEffect(() => {
     fetch(
-      "https://www.cheapshark.com/api/1.0/deals?AAA=1&sortBy=DealRating&pageSize=3",
+      "https://www.cheapshark.com/api/1.0/deals?AAA=1&sortBy=DealRating&pageSize=9",
     )
       .then((response) => response.json())
       .then((json) => {
         setGames(json);
+        setFilteredGames(
+          Array.from(
+            new Map(
+              json.map((item: { title: any }) => [item.title, item]),
+            ).values(),
+          ),
+        );
       });
   }, []);
 
@@ -23,10 +31,11 @@ function TripleA() {
         <h2 className={style.h2}>AAA-Spel</h2>
         <p>På rabatt just nu</p>
       </div>
-      {/*Övergripande div*/}
+      {/*Overarching div*/}
       <div className={style.tripleA}>
-        {/*Div för enskilt spel*/}
-        {games.map((game: any, index: any) => (
+        {/*Div for individual game*/}
+        {/*Max 3 games printed*/}
+        {filteredGames.slice(0, 3).map((game: any, index: any) => (
           <div
             key={index}
             className={style.game}

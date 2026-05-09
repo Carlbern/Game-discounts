@@ -8,46 +8,45 @@ import {
 
 function ListSimple(props: any) {
   const [games, setGames]: any = useState([]);
+  const [filteredGames, setFilteredGames]: any = useState([]);
 
-  //För att hämta senaste rabatterna
-  if (props.recent) {
-    useEffect(() => {
-      fetch("https://www.cheapshark.com/api/1.0/deals?sortBy=DealRating")
-        .then((response) => response.json())
-        .then((json) => {
-          setGames(json);
-        });
-    }, []);
+  useEffect(() => {
+    let url = "";
+    if (props.recent) {
+      url = "https://www.cheapshark.com/api/1.0/deals?sortBy=DealRating";
+    } else if (props.reviews) {
+      url = "https://www.cheapshark.com/api/1.0/deals?sortBy=Metacritic";
+    } else if (props.top) {
+      url = "https://www.cheapshark.com/api/1.0/deals?sortBy=Savings";
+    } else {
+      return;
+    }
 
-    //För att hämta rabatter med bäst spelbetyg
-  } else if (props.reviews) {
-    useEffect(() => {
-      fetch("https://www.cheapshark.com/api/1.0/deals?sortBy=Metacritic")
-        .then((response) => response.json())
-        .then((json) => {
-          setGames(json);
-        });
-    }, []);
-    //För att hämta rabatter med störst mängd sparande
-  } else if (props.top) {
-    useEffect(() => {
-      fetch("https://www.cheapshark.com/api/1.0/deals?sortBy=Savings")
-        .then((response) => response.json())
-        .then((json) => {
-          setGames(json);
-        });
-    }, []);
-  }
-  console.log(games);
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => {
+        setGames(json);
+        setFilteredGames(
+          Array.from(
+            new Map(
+              json.map((item: { title: any }) => [item.title, item]),
+            ).values(),
+          ),
+        );
+      });
+    console.log(filteredGames); // Log once per fetch
+  }, [props.recent, props.reviews, props.top]);
+
   return (
     <>
       {props.recent && <h3>Senaste rabatterna</h3>}
       {props.reviews && <h3>Bästa recensionner</h3>}
       {props.top && <h3>Bästa rabatterna</h3>}
-      {/*Övergripande div*/}
+      {/*Overarching div*/}
       <div className={style.ListSimple}>
-        {/*Varje enskilt spel i listan*/}
-        {games.map((game: any) => (
+        {/*Every individual game in list*/}
+        {/*Maximum 10 items printed*/}
+        {filteredGames.slice(0, 10).map((game: any) => (
           <div className={style.gameListItem}>
             {/*Left side of list item */}
             <div className={style.leftSide}>
@@ -55,22 +54,22 @@ function ListSimple(props: any) {
             </div>
             {/*Right side of list item */}
             <div className={style.rightSide}>
-              {/*Speltitel */}
+              {/*Game title*/}
               <h4>{game.title}</h4>
-              {/*Icon och pris */}
+              {/*Icon and price */}
               {props.recent && (
                 <div className={style.prices}>
-                  {/*Bilden syns enbart i mobilvy */}
+                  {/*Image only shown in mobile-view */}
                   <img src={game.thumb} className={style.mobileViewImage} />
                   <p>
                     <span>
                       <FontAwesomeIcon icon={faArrowTrendDown} />
                       <span> </span>
                     </span>
-                    {/*Pris */}
+                    {/*Price */}
                     {Math.round(game.savings)}%
                   </p>
-                  {/*Knapp */}
+                  {/*Button */}
                   <a
                     href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
                   >
