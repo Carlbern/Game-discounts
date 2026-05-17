@@ -9,14 +9,18 @@ import {
 function ListSimple(props: any) {
   const [games, setGames]: any = useState([]);
   const [filteredGames, setFilteredGames]: any = useState([]);
+  const [listLength, setListLength] = useState(10);
 
   useEffect(() => {
     let url = "";
     if (props.recent) {
+      setListLength(10);
       url = "https://www.cheapshark.com/api/1.0/deals?sortBy=DealRating";
     } else if (props.reviews) {
+      setListLength(10);
       url = "https://www.cheapshark.com/api/1.0/deals?sortBy=Metacritic";
     } else if (props.top) {
+      setListLength(100);
       url = "https://www.cheapshark.com/api/1.0/deals?sortBy=Savings";
     } else {
       return;
@@ -46,7 +50,7 @@ function ListSimple(props: any) {
       <div className={style.ListSimple}>
         {/*Every individual game in list*/}
         {/*Maximum 10 items printed*/}
-        {filteredGames.slice(0, 10).map((game: any) => (
+        {filteredGames.slice(0, listLength).map((game: any) => (
           <div className={style.gameListItem}>
             {/*Left side of list item */}
             <div className={style.leftSide}>
