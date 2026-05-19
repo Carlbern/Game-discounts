@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import { OrbitProgress } from "react-loading-indicators";
 import style from "../styles/SearchStyle.module.css";
 import Header from "../components/Header";
 import ListSimple from "../components/ListSimple";
@@ -8,13 +9,17 @@ import Footer from "../components/Footer";
 
 function Search() {
   const { title } = useParams<{ title: any }>();
+  const url = `https://www.cheapshark.com/api/1.0/games?title=${title}`;
+
   const [games, setGames]: any = useState([]);
+  const [isLoading, setIsLoading]: any = useState(true);
 
   //Hämtar alla spel efter sökning av dess titel
   useEffect(() => {
-    fetch(`https://www.cheapshark.com/api/1.0/games?title=${title}`)
+    fetch(url)
       .then((response) => response.json())
       .then((json) => {
+        setIsLoading(false);
         setGames(json);
       });
     console.log(games);
@@ -25,9 +30,17 @@ function Search() {
       <Header />
       <div className="main">
         {title ? (
-          <div className="">
+          <div className={style.searchMain}>
             <h2 className={style.h2}>Sökresultat</h2>
-            {games.length > 0 ? (
+            {isLoading && (
+              <OrbitProgress
+                color="rgb(168, 248, 232)"
+                size="medium"
+                text=""
+                textColor=""
+              />
+            )}
+            {games.length > 0 && isLoading === false ? (
               <div>
                 {/*Enskilt spel */}
                 {games.map((game: any, index: any) => (
@@ -49,7 +62,10 @@ function Search() {
                 ))}
               </div>
             ) : (
-              <h3 className="noResult">Inga sökresultat</h3>
+              games.length < 1 &&
+              isLoading === false && (
+                <h3 className="noResult">Inga sökresultat</h3>
+              )
             )}
           </div>
         ) : (

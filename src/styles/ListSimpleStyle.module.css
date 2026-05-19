@@ -4,6 +4,7 @@ h3 {
 }
 .ListSimple {
   width: 100%;
+  min-height: 500px;
 }
 .gameListItem {
   border-bottom: solid black;

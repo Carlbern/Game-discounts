@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
-
+import { OrbitProgress } from "react-loading-indicators";
 import style from "../styles/TripleAStyle.module.css";
 
 function TripleA() {
-  const [games, setGames] = useState([]);
+  const url =
+    "https://www.cheapshark.com/api/1.0/deals?AAA=1&sortBy=DealRating&pageSize=9";
+
+  const [isLoading, setIsLoading]: any = useState(true);
+  const [, setGames] = useState([]);
   const [filteredGames, setFilteredGames]: any = useState([]);
   {
     /*Fetches top AAA games from API, to be filtered later*/
   }
   useEffect(() => {
-    fetch(
-      "https://www.cheapshark.com/api/1.0/deals?AAA=1&sortBy=DealRating&pageSize=9",
-    )
+    fetch(url)
       .then((response) => response.json())
       .then((json) => {
+        setIsLoading(false);
         setGames(json);
         setFilteredGames(
           Array.from(
@@ -33,6 +36,14 @@ function TripleA() {
       </div>
       {/*Overarching div*/}
       <div className={style.tripleA}>
+        {isLoading && (
+          <OrbitProgress
+            color="rgb(168, 248, 232)"
+            size="medium"
+            text=""
+            textColor=""
+          />
+        )}
         {/*Div for individual game*/}
         {/*Max 3 games printed*/}
         {filteredGames.slice(0, 3).map((game: any, index: any) => (

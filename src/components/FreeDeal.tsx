@@ -1,21 +1,32 @@
 import style from "../styles/FreeDealStyle.module.css";
+import { OrbitProgress } from "react-loading-indicators";
 import { useState, useEffect } from "react";
 
 function FreeDeal() {
+  const url =
+    "https://www.cheapshark.com/api/1.0/deals?sortBy=Recent&upperPrice=0&pageSize=1";
   const [game, setPosts]: any = useState([]);
+  const [isLoading, setIsLoading]: any = useState(true);
 
   useEffect(() => {
-    fetch(
-      "https://www.cheapshark.com/api/1.0/deals?sortBy=Recent&upperPrice=0&pageSize=1",
-    )
+    fetch(url)
       .then((response) => response.json())
       .then((json) => {
+        setIsLoading(false);
         setPosts(json);
       });
   }, []);
 
   return (
     <div className="main">
+      {isLoading && (
+        <OrbitProgress
+          color="rgb(168, 248, 232)"
+          size="medium"
+          text=""
+          textColor=""
+        />
+      )}
       {game.map((game: any) => (
         <div className={style.main}>
           {/*Bannern, vanligtvis på vänster sida */}

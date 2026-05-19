@@ -1,15 +1,18 @@
 import style from "../styles/ListSimpleStyle.module.css";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { OrbitProgress } from "react-loading-indicators";
+
 import {
   faCertificate,
   faArrowTrendDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 function ListSimple(props: any) {
-  const [games, setGames]: any = useState([]);
+  const [, setGames]: any = useState([]);
   const [filteredGames, setFilteredGames]: any = useState([]);
-  const [listLength, setListLength] = useState(10);
+  const [listLength, setListLength]: any = useState(10);
+  const [isLoading, setIsLoading]: any = useState(true);
 
   useEffect(() => {
     let url = "";
@@ -29,6 +32,7 @@ function ListSimple(props: any) {
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
+        setIsLoading(false);
         setGames(json);
         setFilteredGames(
           Array.from(
@@ -48,6 +52,15 @@ function ListSimple(props: any) {
       {props.top && <h3>Bästa rabatterna</h3>}
       {/*Overarching div*/}
       <div className={style.ListSimple}>
+        {/*Loading indicator*/}
+        {isLoading && (
+          <OrbitProgress
+            color="rgb(168, 248, 232)"
+            size="medium"
+            text=""
+            textColor=""
+          />
+        )}
         {/*Every individual game in list*/}
         {/*Maximum 10 items printed*/}
         {filteredGames.slice(0, listLength).map((game: any) => (

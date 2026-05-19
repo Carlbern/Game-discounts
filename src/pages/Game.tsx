@@ -4,25 +4,33 @@ import Footer from "../components/Footer";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import style from "../styles/GameStyle.module.css";
+import { OrbitProgress } from "react-loading-indicators";
 
 function Game() {
   const { id } = useParams<{ id: any }>();
+  const urlGame = `https://www.cheapshark.com/api/1.0/games?id=${id}`;
+  const urlStores = `https://www.cheapshark.com/api/1.0/stores`;
+
   const [game, setGame]: any = useState([]);
   const [stores, setStores]: any = useState([]);
+  const [isLoadingGame, setIsLoadingGame]: any = useState(true);
+  const [isLoadingStores, setIsLoadingStores]: any = useState(true);
 
   useEffect(() => {
-    fetch(`https://www.cheapshark.com/api/1.0/games?id=${id}`)
+    fetch(urlGame)
       .then((response) => response.json())
       .then((json) => {
+        setIsLoadingGame(false);
         setGame(json);
       });
     console.log(game);
   }, []);
 
   useEffect(() => {
-    fetch(`https://www.cheapshark.com/api/1.0/stores`)
+    fetch(urlStores)
       .then((response) => response.json())
       .then((json) => {
+        setIsLoadingStores(false);
         setStores(json);
       });
     console.log(stores);
@@ -30,9 +38,19 @@ function Game() {
   return (
     <>
       <Header />
-      {/*Övergripande div*/}
+      {/*Overarching div*/}
+      {isLoadingGame && (
+        <div className={`main ${style.main}`}>
+          <OrbitProgress
+            color="rgb(168, 248, 232)"
+            size="medium"
+            text=""
+            textColor=""
+          />
+        </div>
+      )}
       {game.info && (
-        <div className={style.main}>
+        <div className={`${style.main}`}>
           {/*Banner */}
           <div className={`main ${style.banner}`}>
             <div className={style.titleimage}>
@@ -93,40 +111,53 @@ function Game() {
             </div>
           </div>
           {/*Alla spelets rabatter i lista*/}
-          <div className={`main ${style.gameDeal}`}>
-            {game.deals && (
-              <div className={style.deals}>
-                <h2>Spelets rabatter</h2>
-                {/*Enskild rabatt*/}
-                {game.deals.map((deal: any) => (
-                  <div className={style.deal}>
-                    {stores[0] && (
-                      <div className={style.store}>
-                        <h4>{stores[deal.storeID - 1].storeName}</h4>
-                        <img
-                          src={`https://www.cheapshark.com${
-                            stores[deal.storeID - 1].images.logo
-                          }`}
-                          alt=""
-                        />
-                      </div>
-                    )}
-                    {/*Knapp*/}
-                    <a
-                      href={`https://www.cheapshark.com/redirect?dealID=${deal.dealID}`}
-                    >
-                      <button className={`${style.listBtn} ${style.priceBtn}`}>
-                        {deal.price}
-                      </button>
-                    </a>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          {isLoadingStores ? (
+            <div className={`main ${style.gameDeals}`}>
+              <OrbitProgress
+                color="rgb(168, 248, 232)"
+                size="medium"
+                text=""
+                textColor=""
+              />
+            </div>
+          ) : (
+            <div className={`main ${style.gameDeals}`}>
+              {game.deals && (
+                <div className={style.deals}>
+                  <h2>Spelets rabatter</h2>
+                  {/*Enskild rabatt*/}
+                  {game.deals.map((deal: any) => (
+                    <div className={style.deal}>
+                      {stores[0] && (
+                        <div className={style.store}>
+                          <h4>{stores[deal.storeID - 1].storeName}</h4>
+                          <img
+                            src={`https://www.cheapshark.com${
+                              stores[deal.storeID - 1].images.logo
+                            }`}
+                            alt=""
+                          />
+                        </div>
+                      )}
+                      {/*Knapp*/}
+                      <a
+                        href={`https://www.cheapshark.com/redirect?dealID=${deal.dealID}`}
+                      >
+                        <button
+                          className={`${style.listBtn} ${style.priceBtn}`}
+                        >
+                          {deal.price}
+                        </button>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
-      <div className="footerGame">
+      <div className={style.footer}>
         <Footer />
       </div>
     </>
