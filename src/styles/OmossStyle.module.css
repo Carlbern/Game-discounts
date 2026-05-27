@@ -22,6 +22,11 @@
   left: 0;
 }
 @media only screen and (max-width: 600px) {
+  .footer {
+    position: relative;
+    align-self: center;
+    justify-self: center;
+  }
   .omMain {
     flex-direction: column;
     justify-content: center;

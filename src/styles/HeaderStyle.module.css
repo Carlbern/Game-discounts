@@ -39,18 +39,18 @@
   .EMPTY-FILLER {
     display: none;
   }
-  h1 {
+  .h1 {
     line-height: 0px;
   }
-  nav {
+  .nav {
   }
-  section {
+  .section {
     display: flex;
     flex-direction: column;
   }
 }
 @media only screen and (max-width: 600px) {
-  h1 {
+  .h1 {
     font-size: 22px;
   }
 }
