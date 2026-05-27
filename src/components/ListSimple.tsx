@@ -47,9 +47,9 @@ function ListSimple(props: any) {
 
   return (
     <>
-      {props.recent && <h3>Senaste rabatterna</h3>}
-      {props.reviews && <h3>Bästa recensionner</h3>}
-      {props.top && <h3>Bästa rabatterna</h3>}
+      {props.recent && <h3>Latest discounts</h3>}
+      {props.reviews && <h3>Best reviews</h3>}
+      {props.top && <h3>Best discounts</h3>}
       {/*Overarching div*/}
       <div className={style.ListSimple}>
         {/*Loading indicator*/}

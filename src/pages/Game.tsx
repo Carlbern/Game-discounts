@@ -56,11 +56,11 @@ function Game() {
             <div className={style.titleimage}>
               <h3>{game.info.title}</h3>
               <img src={game.info.thumb} alt="" />
-              {/*Info om spel (bara dess betyg för tillfället) */}
+              {/*Info about game (only its reviews for now) */}
             </div>
 
             <div className={style.info}>
-              <h4>Betyg:</h4>
+              <h4>Reviews:</h4>
               {game.deals[0] && (
                 <div className={style.info}>
                   {/*Steam*/}
@@ -92,9 +92,9 @@ function Game() {
                 </div>
               )}
             </div>
-            {/*Spelets bästa rabatt*/}
+            {/*Games best discount*/}
             <div className={style.bestDeal}>
-              <h4>Bästa deal</h4>
+              <h4>Best deal</h4>
               <GameDeal
                 className="bestDealImage"
                 type="bestdeal"
@@ -110,7 +110,7 @@ function Game() {
               </a>
             </div>
           </div>
-          {/*Alla spelets rabatter i lista*/}
+          {/*All of games discoutns in a list*/}
           {isLoadingStores ? (
             <div className={`main ${style.gameDeals}`}>
               <OrbitProgress
@@ -124,8 +124,8 @@ function Game() {
             <div className={`main ${style.gameDeals}`}>
               {game.deals && (
                 <div className={style.deals}>
-                  <h2>Spelets rabatter</h2>
-                  {/*Enskild rabatt*/}
+                  <h2>Games discounts</h2>
+                  {/*Individual discount*/}
                   {game.deals.map((deal: any) => (
                     <div className={style.deal}>
                       {stores[0] && (
@@ -139,14 +139,14 @@ function Game() {
                           />
                         </div>
                       )}
-                      {/*Knapp*/}
+                      {/*Button*/}
                       <a
                         href={`https://www.cheapshark.com/redirect?dealID=${deal.dealID}`}
                       >
                         <button
                           className={`${style.listBtn} ${style.priceBtn}`}
                         >
-                          {deal.price}
+                          ${deal.price}
                         </button>
                       </a>
                     </div>

@@ -19,22 +19,22 @@ function Header(props: any) {
   };
   return (
     <div className="main">
-      {/*Visar sidrubrik */}
-      {props.main && <h1>Spelrabatter.se</h1>}
+      {/*Page header */}
+      {props.main && <h1>Game Discounts</h1>}
       <section className={style.section}>
         <div className="EMPTY-FILLER"></div>
         <nav className={style.nav}>
           <Link className={style.link} to="/">
-            Hem
+            Home
           </Link>
           <Link className={style.link} to="/search">
-            Top Rabatter
+            Top discounts
           </Link>
           <Link className={style.link} to="/omoss">
-            Om oss
+            About
           </Link>
         </nav>
-        {/*Sök input och knapp*/}
+        {/*Search input and button*/}
         <div className={style.search}>
           <input
             onKeyDown={(e) => registerKeyDown(e, { search })}
@@ -44,7 +44,7 @@ function Header(props: any) {
           />
 
           <Link to={`/search/${search}`}>
-            <button>Sök</button>
+            <button>Search game</button>
           </Link>
         </div>
       </section>

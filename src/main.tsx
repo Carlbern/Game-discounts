@@ -7,8 +7,7 @@ import Search from "./pages/Search.tsx";
 import Omoss from "./pages/Omoss.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter
-  //basename="/game-discounts"
+  <BrowserRouter //basename="/game-discounts"
   >
     <Routes>
       <Route path="/" element={<Home />} />

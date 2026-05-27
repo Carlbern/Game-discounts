@@ -5,7 +5,7 @@ function GameDeal(props: any) {
   const [bestDeal, setDeal]: any = useState([]);
   const [stores, setStores]: any = useState([]);
 
-  //Hämtar specifik rabatt efter dess ID
+  //Fetches discount from its ID
   useEffect(() => {
     fetch(`https://www.cheapshark.com/api/1.0/deals?id=${props.id}`)
       .then((response) => response.json())
@@ -15,7 +15,7 @@ function GameDeal(props: any) {
   }, [props.id]);
   console.log(bestDeal);
 
-  //Hämtar alla butiker och dess information
+  //Fetches all stores and their information
   useEffect(() => {
     fetch(`https://www.cheapshark.com/api/1.0/stores`)
       .then((response) => response.json())
@@ -25,7 +25,7 @@ function GameDeal(props: any) {
     console.log(stores);
   }, [bestDeal]);
 
-  //Hämta information om spelets recensioner
+  //Fetch information of games best reviews
   if (props.type == "reviews") {
     return (
       <>
@@ -55,7 +55,7 @@ function GameDeal(props: any) {
       </>
     );
   }
-  //Hämtar spelets bästa rabatt
+  //Fetch games best discounts
   else if (props.type == "bestdeal") {
     return (
       <>

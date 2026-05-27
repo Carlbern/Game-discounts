@@ -10,27 +10,23 @@ function Omoss() {
         <div className={style.siteDesc}>
           <h2>Om sidan</h2>
           <p className={style.p}>
-            Denna sidan är skapad i syfte att mäkla rabatter från massa olika
-            återförsäljare. Du kan på sidan söka efter specifika spel för att
-            upptäcka potetiella rabatter, du kan också på landningssidan hitta
-            diverse rabatter som vi tycker är speciellt intressanta.
+            This website is create for the purpose of brokering discounts from
+            many resellers. You can on the website search for specific games in
+            order to discover potential discoutns. You can also find
+            miscellaneous discounts that we find particularly interesting.
           </p>
           <p className={style.p}>
-            Sidan är skapad med hjälp av ramverket{" "}
-            <a href="https://react.dev/">React</a> och dess tillägg{" "}
+            The website is created using the{" "}
+            <a href="https://react.dev/">React</a> framework and its library{" "}
             <a href="https://reactrouter.com/">react-router</a>
           </p>
         </div>
         <div className={style.apiInfo}>
           <h2>API</h2>
           <p className={style.p}>
-            Sidan använder sig av Rest API:et{" "}
-            <a href="https://reactrouter.com/">Cheapshark</a>, ett API för
-            prisjämförelse online.
-          </p>
-          <p className={style.p}>
-            Man kan bland annat söka efter spel genom dess namn eller id eller
-            söka efter rabatter givet filter och sortering.
+            The website uses the Rest API:{" "}
+            <a href="https://reactrouter.com/">Cheapshark</a>, an API for price
+            comparisons online.
           </p>
         </div>
       </div>

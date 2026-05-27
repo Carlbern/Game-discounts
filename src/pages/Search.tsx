@@ -31,7 +31,7 @@ function Search() {
       <div className="main">
         {title ? (
           <div className={style.searchMain}>
-            <h2 className={style.h2}>Sökresultat</h2>
+            <h2 className={style.h2}>Search results</h2>
             {isLoading && (
               <OrbitProgress
                 color="rgb(168, 248, 232)"
@@ -42,20 +42,20 @@ function Search() {
             )}
             {games.length > 0 && isLoading === false ? (
               <div>
-                {/*Enskilt spel */}
+                {/*Individal game */}
                 {games.map((game: any, index: any) => (
                   <div key={index} className={style.gameSearch}>
                     <h3 className={style.h3}>{game.external}</h3>
                     <div className={style.searchImage}>
                       <img className={style.img} src={game.thumb} alt="" />
                     </div>
-                    {/*Knapp*/}
+                    {/*Button*/}
                     <Link
                       className={style.searchBtn}
                       to={`/game/${game.gameID}`}
                     >
                       <button className={`${style.priceBtn} ${style.listBtn}`}>
-                        Gå till spel
+                        Go to game
                       </button>
                     </Link>
                   </div>

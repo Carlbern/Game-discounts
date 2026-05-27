@@ -31,8 +31,8 @@ function TripleA() {
   return (
     <div className="main">
       <div className={style.headers}>
-        <h2 className={style.h2}>AAA-Spel</h2>
-        <p>På rabatt just nu</p>
+        <h2 className={style.h2}>AAA-Games</h2>
+        <p>On discounts right now</p>
       </div>
       {/*Overarching div*/}
       <div className={style.tripleA}>
@@ -57,10 +57,10 @@ function TripleA() {
               <h4>{game.title}</h4>
               <div className={style.prices}>
                 <p className={style.orgPrice}>
-                  Original pris: ${game.normalPrice}
+                  Original price: ${game.normalPrice}
                 </p>
-                Pris:
-                {/*Om spel är gratis*/}
+                Price:
+                {/*If game is free*/}
                 {Math.round(game.salePrice) == 0 && (
                   <a
                     href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
@@ -68,7 +68,7 @@ function TripleA() {
                     <button className={style.priceBtn}> Free</button>
                   </a>
                 )}
-                {/*Om spel INTE är gratis*/}
+                {/*if game is NOT free*/}
                 {Math.round(game.salePrice) > 0 && (
                   <a
                     href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
@@ -81,7 +81,7 @@ function TripleA() {
                 )}
               </div>
               <p className={style.saving}>
-                Rabatt: {Math.round(game.savings)}%
+                Savings: {Math.round(game.savings)}%
               </p>
             </div>
           </div>

@@ -29,24 +29,24 @@ function FreeDeal() {
       )}
       {game.map((game: any) => (
         <div className={style.main}>
-          {/*Bannern, vanligtvis på vänster sida */}
+          {/*Banner, usually on the left side */}
           <div
             className={style.banner}
             style={{ backgroundImage: `url(${game.thumb})` }}
           >
-            {/*Ligger "över" bannern för att mörk bakgrund*/}
+            {/*Is in front of banner to create dark filter*/}
             <div className="gameText"></div>
             <div className={style.headers}>
-              <h2>Gratis deal</h2>
-              <p>Just nu</p>
+              <h2>Free deal</h2>
+              <p>Right now!</p>
             </div>
             <h3 className={style.title}>{game.title}</h3>
           </div>
-          {/*Text med priser, vanligtvis på höger sida*/}
+          {/*Text with prices, usually on right side*/}
           <div className={style.prices}>
             <div className="orgPrices">
-              <p className="orgPrice">Orginal pris: ${game.normalPrice}</p>
-              <p className="saving">Rabatt: {Math.round(game.savings)}%</p>
+              <p className="orgPrice">Original price: ${game.normalPrice}</p>
+              <p className="saving">Discount: {Math.round(game.savings)}%</p>
             </div>
             <div className={style.priceButton}>
               <a

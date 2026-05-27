@@ -8,13 +8,13 @@ function Footer() {
       <ul className={`${style.footerUl}`}>
         <h4>Navigation</h4>
         <li>
-          <Link to="/">Hem</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/search">Top rabatter</Link>
+          <Link to="/search">Top discounts</Link>
         </li>
         <li>
-          <Link to="Omoss">Om oss</Link>
+          <Link to="Omoss">About</Link>
         </li>
       </ul>
       {/*Powered by message */}
