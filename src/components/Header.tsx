@@ -30,7 +30,7 @@ function Header(props: any) {
           <Link className={style.link} to="/search">
             Top discounts
           </Link>
-          <Link className={style.link} to="/omoss">
+          <Link className={style.link} to="/about">
             About
           </Link>
         </nav>

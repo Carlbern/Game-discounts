@@ -124,7 +124,7 @@ function Game() {
             <div className={`main ${style.gameDeals}`}>
               {game.deals && (
                 <div className={style.deals}>
-                  <h2>Games discounts</h2>
+                  <h2>Best prices</h2>
                   {/*Individual discount*/}
                   {game.deals.map((deal: any) => (
                     <div className={style.deal}>

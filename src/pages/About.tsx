@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import style from "../styles/OmossStyle.module.css";
+import style from "../styles/AboutStyle.module.css";
 
 function Omoss() {
   return (
@@ -8,7 +8,7 @@ function Omoss() {
       <Header />
       <div className={`main ${style.omMain}`}>
         <div className={style.siteDesc}>
-          <h2>Om sidan</h2>
+          <h2>About the website</h2>
           <p className={style.p}>
             This website is create for the purpose of brokering discounts from
             many resellers. You can on the website search for specific games in
