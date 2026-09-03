@@ -2,10 +2,10 @@
 
 A React + TypeScript web application that helps you find the best deals on video games by aggregating discounts from multiple retailers using the Cheapshark API.
 
-Link to live site: filipbernhard.com/game-discounts
+Link to live site: [Link to live demo](https://filipbernhard.com/game-discounts)
 
 ## 📸 Preview
-![Alt text](public/images/screenshot.png)
+![Screenshot of projects landing page](public/images/screenshot.png)
 
 ## 🚀 Features
 
